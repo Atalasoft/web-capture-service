@@ -71,7 +71,7 @@ scanning controls and viewer.</p>
 <li>Atalasoft.dotImage.WebControls</li>
 <li>Atalasoft.Shared</li>
 </ul>
-<p>In a default installation, these assemblies can be found in <code>C:\Program Files (x86)\Atalasoft\DotImage 11.2\bin\3.5\x86</code>.</p>
+<p>In a default installation, these assemblies can be found in <code>C:\Program Files (x86)\Atalasoft\DotImage 11.3\bin\3.5\x86</code>.</p>
 <p>There may be further dependencies on any of the remaining DotImage assemblies. Include all DotImage assemblies in your project if there are problems resolving them.</p>
 <h4>Copy web resources</h4>
 <p>WingScan comes with two sets of web resources: WebCapture and WebDocumentViewer.
@@ -91,15 +91,15 @@ Change the class definition to extend WebDocumentRequestHandler (part of ). Your
 <pre class="prettyprint source lang-c#"><code>using Atalasoft.Imaging.WebControls;
 namespace BasicWebCapture
 {
-	public class WebDocViewerHandler : WebDocumentRequestHandler
-	{ 
-	}
+public class WebDocViewerHandler : WebDocumentRequestHandler
+{ 
+}
 }
 </code></pre>
 <p>Further modification to your handler is optional and allows to modify default behavior according to application logic.</p>
 <h2>Add the Web Capture handler</h2>
 <p>The Web Capture handler is responsible for handling file uploads from the scanning controls embedded in your page, and routing them to their next destination along with any necessary metadata. It is also responsible for supplying the scanning controls with the available content and document types, and status information.</p>
-<p><em><strong>Note</strong></em>, <code>WebCaptureRequestHandler customizations described below is required only in case if application utilizing document capture functionality. For regular scanning, WebCaptureRequestHandler is required for licensing and default scanned files upload mechanism and don't requires customization.</code></p>
+<p><em><strong>Note</strong></em> <code>WebCaptureRequestHandler customizations described below is required only in case if application utilizing document capture functionality. For regular scanning, WebCaptureRequestHandler is required for licensing and default scanned files upload mechanism and don't requires customization.</code></p>
 <p>For this guide, we will create a custom handler that provides a few static content and document types, and saves uploaded files to another location. Using this baseline, you can continue modifying the handler to suit your own document handling needs.</p>
 <p>If your organization uses Kofax Import Connector (KIC) or Microsoft SharePoint for document
 management, DotImage ships with handlers to connect to these services. Check their respective topics for more information on how to use these handlers.</p>
@@ -189,7 +189,7 @@ private List&lt;Dictionary&lt;String, String>> CreateDocumentClassDictionaryList
 <h3>Include the web resources</h3>
 <p>Include the following script and link tags in your page's head section to include the necessary Web Document Viewer and Web Capture code and dependencies.</p>
 <pre class="prettyprint source lang-javascript"><code>&lt;!-- Script includes for Web Viewing -->
-&lt;script src=&quot;jquery-3.4.1.min.js&quot; type=&quot;text/javascript&quot;>&lt;/script>
+&lt;script src=&quot;jquery-3.5.1.min.js&quot; type=&quot;text/javascript&quot;>&lt;/script>
 &lt;script src=&quot;atalaWebDocumentViewer.js&quot; type=&quot;text/javascript&quot;>&lt;/script>
 &lt;!-- Style for Web Viewer -->
 &lt;link href=&quot;jquery-ui-1.12.1.min.css&quot; rel=&quot;Stylesheet&quot; type=&quot;text/css&quot; />
@@ -289,8 +289,8 @@ If you expect to upload larger files, you will need to increase this limit by ed
   &lt;system.webServer>
     &lt;security>
       &lt;requestFiltering>
-        &lt;!-- Sets the maximum lengeth of content in request, measured in bytes, default values is 30000000 bytes. -->
-        &lt;!-- This seeting required by IIS. -->
+        &lt;!-- Sets the maximum length of content in request, measured in bytes, default values is 30000000 bytes. -->
+        &lt;!-- This setting required by IIS. -->
         &lt;requestLimits maxAllowedContentLength=&quot;524288000&quot;/>
       &lt;/requestFiltering>
     &lt;/security>

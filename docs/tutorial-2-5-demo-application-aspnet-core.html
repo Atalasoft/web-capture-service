@@ -67,7 +67,7 @@ deploy. Once you have succeeded building the example project, you can begin modi
 <p>Start by creating a new <code>ASP.NET Core Web Application (.NET Framework)</code> in Visual Studio targeting .NET 4.7.1.</p>
 <p><em><strong>Note</strong></em> <code>In the following instructions the project is called WebCaptureBasic.</code></p>
 <p>Choose <code>Empty</code> template on the following window</p>
-<p><img src="img/EmptyTemplate.png" alt=""></p>
+<p><img src="img/EmptyTemplate.png" alt="Empty project"></p>
 <p>Visual Studio automatically will create you a project with &quot;Hello world&quot; application. It already has a <code>Startup</code> class and
 all necessary Nuget packages for running this application as self-hosted, of course, you can use IIS Express instead.</p>
 <h3>Add Nuget packages for server-side</h3>
@@ -94,24 +94,24 @@ be downloaded.</p>
   &quot;name&quot;: &quot;asp.net&quot;,
   &quot;private&quot;: true,
   &quot;dependencies&quot;: {
-    &quot;web-document-viewer&quot;: &quot;~11.2.0&quot;,
-    &quot;web-capture-service&quot;: &quot;~11.2.0&quot;
+    &quot;web-document-viewer&quot;: &quot;~11.3.0&quot;,
+    &quot;web-capture-service&quot;: &quot;~11.3.0&quot;
   }
 }
 </code></pre>
-<p>In this file we setup package name, made it private, in order to do not publish it accindentally, and added two dependencies to a <a href="https://github.com/Atalasoft/web-document-viewer">web-document-viewer</a> package and to a <a href="https://github.com/Atalasoft/web-capture-service">web-capture-service</a> package. The <code>~</code> symbol before the version allows us to download latest patch version of the package.</p>
+<p>In this file we setup package name, made it private, in order to do not publish it accidentally, and added two dependencies to a <a href="https://github.com/Atalasoft/web-document-viewer">web-document-viewer</a> package and to a <a href="https://github.com/Atalasoft/web-capture-service">web-capture-service</a> package. The <code>~</code> symbol before the version allows us to download latest patch version of the package.</p>
 <h4>Add npm packages for client-side</h4>
-<p>To add npm packages you need to create a <code>package.json</code> from <code>npm Configuration file</code> template, add there a <a href="https://www.npmjs.com/package/web-document-viewer">web-document-viewer</a> and a <a href="https://www.npmjs.com/package/web-capture-service">web-capture-service</a> packages, and save the file. After that the Visual Studion installs this package with all dependencies to <code>node_modules</code> folder in project root. This folder can not be accessed from the web application without additional code modifications on server-side, but for security reasons it's totally okay. You need to place all necessary files from this folder to <code>wwwroot\&lt;subfolder&gt;</code> path, it can be done manually of with using help of scripts.
+<p>To add npm packages you need to create a <code>package.json</code> from <code>npm Configuration file</code> template, add there a <a href="https://www.npmjs.com/package/web-document-viewer">web-document-viewer</a> and a <a href="https://www.npmjs.com/package/web-capture-service">web-capture-service</a> packages, and save the file. After that the Visual Studio installs this package with all dependencies to <code>node_modules</code> folder in project root. This folder can not be accessed from the web application without additional code modifications on server-side, but for security reasons it's totally okay. You need to place all necessary files from this folder to <code>wwwroot\&lt;subfolder&gt;</code> path, it can be done manually of with using help of scripts.
 Also, if you use npm version 5 or higher, don't forget to commit <code>package-lock.json</code> file in order to be sure, that every time the same set of packages with same versions will be installed.</p>
 <h5>Configure npm packages deployment</h5>
-<p>To make life easier with scripts deployment we add some packages in our <code>package.json</code> file. First of them is <a href="https://www.npmjs.com/package/gulp">gulp</a>, using it we create several tasks that will be run on every build target &quot;Build&quot; and &quot;Clean&quot;. The second package is <a href="https://www.npmjs.com/package/rimraf">rimraf</a> - it's needed for easy folde removal on &quot;Clean&quot;. As a result, <code>package.json</code> file could be look like this:</p>
+<p>To make life easier with scripts deployment we add some packages in our <code>package.json</code> file. First of them is <a href="https://www.npmjs.com/package/gulp">gulp</a>, using it we create several tasks that will be run on every build target &quot;Build&quot; and &quot;Clean&quot;. The second package is <a href="https://www.npmjs.com/package/rimraf">rimraf</a> - it's needed for easy folder removal on &quot;Clean&quot;. As a result, <code>package.json</code> file could be look like this:</p>
 <pre class="prettyprint source lang-javascript"><code>{
   &quot;version&quot;: &quot;1.0.0&quot;,
   &quot;name&quot;: &quot;web-capture-service-basic&quot;,
   &quot;private&quot;: true,
   &quot;devDependencies&quot;: {
-    &quot;web-document-viewer&quot;: &quot;~11.2.0&quot;,
-    &quot;web-capture-service&quot;: &quot;~11.2.0&quot;,
+    &quot;web-document-viewer&quot;: &quot;~11.3.0&quot;,
+    &quot;web-capture-service&quot;: &quot;~11.3.0&quot;,
     &quot;gulp&quot;: &quot;^4.0.0&quot;,
     &quot;rimraf&quot;: &quot;^2.0.0&quot;
   }
@@ -125,9 +125,9 @@ const gulp = require(&quot;gulp&quot;);
 const rimraf = require(&quot;rimraf&quot;);
 
 const libPath = 'wwwroot/lib/'; //Path where all dependencies should be copied
-const nodeModules = &quot;node_modules/&quot;; //Folder where node moduels stored by default
+const nodeModules = &quot;node_modules/&quot;; //Folder where node modules stored by default
 
-//List of dependecies for our application
+//List of dependencies for our application
 //src - list of files of wildcard paths to files to copy
 //dest - folder name of path relative to libpath variable where files should be copied
 const dependencies = [
@@ -227,11 +227,13 @@ embedded in your page and is separate from the capture middleware.</p>
 <p>The Web Capture middleware is responsible for handling file uploads from the scanning controls embedded in your page,
 and routing them to their next destination along with any necessary metadata.
 It is also responsible for supplying the scanning controls with the available content and document types, and status information.</p>
-<p>For this guide, we will create a default middleware, without any customization.
-But you can implement the interface <code>IWebCaptureServiceCallbacks</code> and pass it to the method <code>RunWebcaptureMiddleware</code>.</p>
 <p>Add a new line of code to the <code>Startup.Configure</code> method, so the result code will be looked the next way:</p>
 <pre class="prettyprint source lang-csharp"><code>app.Map(&quot;/wcs&quot;, wcsApp => wcsApp.RunWebCaptureMiddleware())
    .Map(&quot;/wdv&quot;, wdvApp => wdvApp.RunWebDocumentViewerMiddleware());
+</code></pre>
+<p>If it is planned that our server will use it for rendering PDF files, we need to add a <code>PdfDecoder</code> to our project.
+You can do this by writing the next code at the beginning of <code>Program.Main</code> method in <code>Program.cs</code> file:</p>
+<pre class="prettyprint source lang-csharp"><code>RegisteredDecoders.Decoders.Add(new PdfDecoder());
 </code></pre>
 <h2>Set up the scanning controls and viewer</h2>
 <p>The setup for web scanning just requires placing some JavaScript, CSS, and HTML into your page. And the first step is to add the new page to your web application. To do this, add a new HTML file with name <code>index.html</code> to the <code>wwwroot</code> folder.</p>
@@ -284,7 +286,7 @@ This can be done with another block of JavaScript, either included or pasted dir
                 toolbarparent: $('.atala-document-toolbar'),
                 serverurl: 'wdv'
             });
-            
+
             Atalasoft.Controls.Capture.WebScanning.initialize({
                 handlerUrl: 'wcs',
                 onScanClientReady: function (eventName, eventObj) {
@@ -344,6 +346,29 @@ This includes the Web Document Viewer, drop-down box to choose scanners and butt
   &lt;/div>
 &lt;/body>
 </code></pre>
+<h3>Middleware customization</h3>
+<p>For this guide, we created a default middleware, but you can customize the middleware by implementing the interface <code>IWebCaptureServiceCallbacks</code> and passing it to the method <code>RunWebCaptureMiddleware</code> as the argument.</p>
+<p>The default implementation of the interface is <code>WebCaptureCallbacks</code> class, that contains default implementation of all methods. So, we should create a new class derived from <code>WebCaptureCallbacks</code> and override the necessary methods:</p>
+<pre class="prettyprint source lang-Csharp"><code>class MyWcsCallbacks : WebCaptureCallbacks
+{
+    public MyWcsCallbacks(IHostingEnvironment env):base(env)
+    {
+    }
+
+    public override string HandleUpload(HttpContext context)
+    {
+        Console.WriteLine(&quot;**********===HandleUpload===**********&quot;);
+        string result = base.HandleUpload(context);
+        return result;
+    }
+}
+</code></pre>
+<p>Then we can pass our custom implementation to <code>RunWebCaptureMiddleware</code>:</p>
+<pre class="prettyprint source lang-Csharp"><code>    ...
+    app.Map(&quot;/wcs&quot;, wcsApp => wcsApp.RunWebCaptureMiddleware(new MyWcsCallbacks(env)))
+    ...
+</code></pre>
+<p>See <a href="http://www.atalasoft.com/docs/chm/ApiReference.chm">API Reference (.chm) file</a> for more information about <code>WebCaptureCallbacks</code> class.</p>
 </article>
 
 </section>
