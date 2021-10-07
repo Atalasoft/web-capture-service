@@ -48,7 +48,7 @@
 </header>
 
 <article>
-    <p>## Automatic scanned document upload</p>
+    <p># Automatic scanned document upload</p>
 <p>For scanned documents automatic upload is triggered after scan completes.
 All scanned images that was'n discarded during scan are combined into multipage tiff file
 on the local scanning service side, downloaded by the browser and then sent to the <code>WebCaptureRequestHandler</code>.</p>
@@ -79,20 +79,20 @@ handler.  After that, images data could be requested and uploaded to the server 
 <p><code>formData</code> object</p>
 <p><em>Default value</em>: <em>null</em></p>
 <p>Each 'own' property of the <code>formData</code> object is inserted in uploads as a form-data part, with its name and value. On the server, if you override the HandleUpload method, each property of the formData object will be available in the context.Request.Form dictionary. Numbers are converted to strings, strings are sent unquoted. Objects and arrays are sent (as strings) in JSON format. Unicode characters are handled correctly in both names and values.</p>
-<pre class="prettyprint source lang-javascript"><code>   Atalasoft.Controls.Capture.UploadToCaptureServer.initialize({
-       uploadOptions: {   
-         formData: {
-           application: 'Doc-U-droid 9000',
-           operator: '',
-           pages: [1, 3, 7]
-       }
-     }
-   });
+<pre class="prettyprint source lang-javascript"><code>      Atalasoft.Controls.Capture.UploadToCaptureServer.initialize({
+          uploadOptions: {
+            formData: {
+              application: 'Doc-U-droid 9000',
+              operator: '',
+              pages: [1, 3, 7]
+          }
+        }
+      });
 </code></pre>
 <p>On the server those properties are available as</p>
-<pre class="prettyprint source lang-c#"><code>string app = context.Request.Form[&quot;application&quot;];
-string oper = context.Request.Form[&quot;operator&quot;];
-string pages = context.Request.Form[&quot;pages&quot;];
+<pre class="prettyprint source lang-csharp"><code>  string app = context.Request.Form[&quot;application&quot;];
+  string oper = context.Request.Form[&quot;operator&quot;];
+  string pages = context.Request.Form[&quot;pages&quot;];
 </code></pre>
 </li>
 <li>
@@ -102,18 +102,17 @@ This optional parameter is a list of additional parts to be inserted in the mult
 </li>
 </ul>
 <p><strong><em>Note</em></strong> <code>The order of strings in the array is not necessarily preserved in the upload.</code></p>
-<pre class="prettyprint source lang-javascript"><code>
-  Atalasoft.Controls.Capture.UploadToCaptureServer.initialize({
-      uploadOptions: {
-            // an upload initiated now will include the 'application' field
-            // above, in the multipart MIME message sent to the server.
-            extraParts: [
-                'Content-Disposition: form-data; name=&quot;application&quot;\n'+
-                '\n'+ 
-                'Doc-U-droid 9000'
-            ]
-       }
-  });
+<pre class="prettyprint source lang-JavaScript"><code>  Atalasoft.Controls.Capture.UploadToCaptureServer.initialize({
+       uploadOptions: {
+             // an upload initiated now will include the 'application' field
+             // above, in the multipart MIME message sent to the server.
+             extraParts: [
+                 'Content-Disposition: form-data; name=&quot;application&quot;\n'+
+                 '\n'+
+                 'Doc-U-droid 9000'
+             ]
+        }
+   });
 </code></pre>
 </article>
 
