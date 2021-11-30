@@ -84,7 +84,7 @@
 <ul>
 <li>
 <p><strong><em>atala-content-type-list</em></strong></p>
-<p>Kofax Import Connector content types and SharePoint document libraries.</p>
+<p>Kofax Import Connector content types libraries.</p>
 <p>This control is automatically loaded with the list of available content types provided by the Kofax Import Connector (KIC) server, and the current visible selection is used when an import is initiated.<br>
 If a connection cannot be established to the KIC server, this control is disabled.</p>
 <pre class="prettyprint source lang-html"><code>&lt;select class=&quot;atala-content-type-list&quot;>&lt;/select>
@@ -92,7 +92,7 @@ If a connection cannot be established to the KIC server, this control is disable
 </li>
 <li>
 <p><strong><em>atala-content-type-document-list</em></strong></p>
-<p>Kofax Import Connector content type descriptions and SharePoint List Content Types.<br>
+<p>Kofax Import Connector content type descriptions.
 This control is automatically loaded with the list of available content type descriptions as provided by the Kofax Import Connector server, and the current visible selection is used when a scan is initiated.<br>
 If a connection cannot be established to the Kofax Import Connector server, this control is disabled.</p>
 <pre class="prettyprint source lang-html"><code>&lt;select class=&quot;atala-content-type-document-list&quot;>&lt;/select>
@@ -100,7 +100,7 @@ If a connection cannot be established to the Kofax Import Connector server, this
 </li>
 <li>
 <p><strong><em>atala-import-button</em></strong></p>
-<p>Kofax Import Connector and SharePoint import button.</p>
+<p>Kofax Import Connector import button.</p>
 <p>This button is automatically enabled if KIC import is possible, and is disabled otherwise.
 When the user clicks it, a KIC import (of the last scanned document) is initiated.</p>
 <pre class="prettyprint source lang-html"><code>&lt;input type=&quot;button&quot; class=&quot;atala-import-button&quot; value=&quot;Import&quot; />
@@ -108,7 +108,7 @@ When the user clicks it, a KIC import (of the last scanned document) is initiate
 </li>
 <li>
 <p><strong><em>atala-indexfield-list</em></strong></p>
-<p>Kofax Import Connector and SharePoint IndexFields.
+<p>Kofax Import Connector IndexFields.
 A table will with the index fields names for a label, and a text input will be constructed at this div.</p>
 <pre class="prettyprint source lang-html"><code>&lt;div class=&quot;atala-indexfield-list&quot; style=&quot;width:600px; height:250px; overflow:scroll; border:solid 1px #CCC;&quot;>&lt;/div>
 </code></pre>
@@ -123,14 +123,14 @@ border:solid 1px #CCC;&quot;>&lt;/div>
 </li>
 <li>
 <p><strong><em>atala-import-index-field-button</em></strong></p>
-<p>Kofax Import Connector and SharePoint Import With Index Fields Button.</p>
+<p>Kofax Import Connector Import With Index Fields Button.</p>
 <p>This button is automatically enabled if import is possible, and is disabled otherwise.</p>
-<p>When the user clicks it, an import (of the last scanned document) along with any entered index field values into Kofax Import Connector or SharePoint is initiated.
+<p>When the user clicks it, an import (of the last scanned document) along with any entered index field values into Kofax Import Connector is initiated.
 One should also note, that any &quot;button&quot; that has a <code>type=&quot;submit&quot;</code> will create an empty POST that will override any POST or GET that the web scanning control sends.</p>
 </li>
 <li>
 <p><strong><em>atala-track-import-button</em></strong></p>
-<p>Kofax Import Connector and SharePoint track import button.
+<p>Kofax Import Connector track import button.
 When the user clicks it, the status of the last import is returned.</p>
 <pre class="prettyprint source lang-html"><code>&lt;input type=&quot;button&quot; class=&quot;atala-track-import-button&quot; value=&quot;Track Import&quot; />
 </code></pre>
@@ -151,8 +151,7 @@ Atalasoft.Controls.Capture.CaptureService.initialize({
 });
 </code></pre>
 <h3>Connect controls with no UI</h3>
-<p>When using the client controls to connect to Kofax Capture through Kofax Import Connector or
-SharePoint, and it is not desired to have the content type/repository name selection boxes on the page,then a value can be passed through the capture service's initialize parameters.</p>
+<p>When using the client controls to connect to Kofax Capture through Kofax Import Connector, and it is not desired to have the content type/repository name selection boxes on the page,then a value can be passed through the capture service's initialize parameters.</p>
 <pre class="prettyprint source lang-javascript"><code>Atalasoft.Controls.Capture.CaptureService.initialize({
     handlerUrl: 'KicWebHandler.ashx',
     contentType: 'AtalasoftEngineering',
@@ -162,7 +161,7 @@ SharePoint, and it is not desired to have the content type/repository name selec
     onError: function(msg, params) { console.log(msg + &quot;: &quot; + params.statusText); }
 });
 </code></pre>
-<p>At a minimum the <code>contentType</code> must be specified for all document imports into Kofax Capture through Kofax Import Connector. For SharePoint a value for the <code>contentType</code>, and <code>contentTypeDescriptionName</code> must be entered for the import to be successful .</p>
+<p>At a minimum the <code>contentType</code> must be specified for all document imports into Kofax Capture through Kofax Import Connector.</p>
 <h3>Import lose pages</h3>
 <p>When connecting to Kofax Capture (KC) via the Kofax Import Connector (KIC) a loose page can be imported by not selecting or specifying a document class/ form type combination when importing a document via the web scanning client, and by having the <code>loosePages</code> initialization parameter set to <code>true</code>.
 By default this parameter is set to <code>false</code>. When set to <code>true</code> by default a <code>blank</code> option will be added to the <code>atala-contenttype-document-list</code> (when available).</p>
@@ -188,7 +187,7 @@ By default this parameter is set to <code>false</code>. When set to <code>true</
 </code></pre>
 <h3>Index fields</h3>
 <h4>Required fields</h4>
-<p>Both Kofax Import Connector, and SharePoint have required index fields that need to be set for an import of a document into them to be successful. When the list of index fields is retrieved from the server the required field information is included with that information, and a class is added to the label of that index field. The class that gets added is:</p>
+<p>Kofax Import Connector has required index fields that need to be set for an import of a document into them to be successful. When the list of index fields is retrieved from the server the required field information is included with that information, and a class is added to the label of that index field. The class that gets added is:</p>
 <pre><code>class=&quot;atala-indexfield-required&quot;
 </code></pre>
 <h4>Hidden fields</h4>
@@ -199,7 +198,7 @@ By default this parameter is set to <code>false</code>. When set to <code>true</
 <p>As part of the <code>Atalasoft.WebScanning.CaptureService.Initialize</code> list of parameters that get passed in includes a mechanism to provide a list of the index fields that <em>should be</em> displayed in the generated table of index fields.</p>
 <p>In the example below the parameter <code>displayedIndexFields</code> specifies the list of index field that should be included for display. Only the index fields with named: &quot;Name&quot;, &quot;Title&quot;, and &quot;Content type&quot; will be displayed.</p>
 <pre class="prettyprint source lang-javascript"><code>Atalasoft.Controls.Capture.CaptureService.initialize({
-    handlerUrl: 'SharepointDemoHandler.ashx',
+    handlerUrl: 'DemoHandler.ashx',
     onError: function(msg, params) { console.log(msg + &quot;: &quot; + params.statusText); },
     onImportCompleted: function(params) { console.log(params.id + &quot;: &quot; + params.status); },
     onTrackStatusReceived: function(params) { console.log(&quot;Import status: &quot; + params); },
@@ -209,7 +208,7 @@ By default this parameter is set to <code>false</code>. When set to <code>true</
 <h4>Set index field values without connecting to UI</h4>
 <p>As with content types, and content type descriptions <code>indexfields</code> can also be passed in through to the import POST parameters via the <code>Atalasoft.Controls.Capture.CaptureService.initialize</code> call.</p>
 <pre class="prettyprint source lang-javascript"><code>Atalasoft.Controls.Capture.CaptureService.initialize({
-    handlerUrl: 'SharepointDemoHandler.ashx',
+    handlerUrl: 'DemoHandler.ashx',
     contentType: 'Documents',
     contentTypeDescriptionName: 'Document',
     indexFields: &quot;Name: Adam, Title: Q3 results , Content Type: &quot;
@@ -222,7 +221,7 @@ By default this parameter is set to <code>false</code>. When set to <code>true</
 import should be handled via the <code>onIndexFieldTypeValidationStatus</code> parameter in the
 <code>Atalasoft.Controls.Capture.CaptureService.initialize</code> setup.</p>
 <pre class="prettyprint source lang-javascript"><code>Atalasoft.Controls.Capture.CaptureService.initialize({
-    handlerUrl: 'SharepointDemoHandler',
+    handlerUrl: 'DemoHandler',
     contentType: 'Documents',
     contentTypeDescriptionName: 'Document',
     onError: function(msg, params) { console.log(msg + &quot;: &quot; + params.statusText); },
@@ -258,7 +257,6 @@ function fieldTypeValidation(params) {
 <p>Required index field have a class applied to them, <code>class=&quot;atala-indexfield-required&quot;</code> for an example of how to use this to apply a red '*' to the beginning of the label name see the Web Capture demo included with the installation.</p>
 <h3>Batch fields</h3>
 <p>Batch Fields are much like index fields. They have the same hidden, and required class associated with them, and can be used to add meta data to loose pages imports into Kofax Capture.</p>
-<p><strong><em>Note</em></strong>, <code>SharePoint does not have an equivalent concept to batch fields, and therefore cannot be used when importing documents into SharePoint.</code></p>
 <h5>Display and enter values</h5>
 <p>Batch fields get displayed in the same <code>&lt;div&gt;</code> as index fields.</p>
 <h5>Filter the displayed list</h5>
