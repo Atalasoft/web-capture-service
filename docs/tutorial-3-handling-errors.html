@@ -81,7 +81,7 @@ Those values will be merged with <a href="Atalasoft.Controls.Capture.html#.Error
 <p><strong>During</strong>: <em>Atalasoft.Controls.Capture.WebScanning.initialize</em></p>
 <p><em>Cause</em>: WebCapture Service detected that it is running in a browser it does not support. Common reasons WebCapture Service might fire this error:</p>
 <ul>
-<li>The browser is not Internet Explorer, Firefox, Chrome, or Safary</li>
+<li>The browser is not Internet Explorer, Edge, Firefox, Chrome, or Safary</li>
 <li>The browser is one of the above, but not a supported version, for example, Internet Explorer 9.0</li>
 <li>The operating system is not Windows or macOS</li>
 </ul>
@@ -93,8 +93,8 @@ __</p>
 <em>Fired in</em>: All browsers.</p>
 <p><em>During</em>: <em>Atalasoft.Controls.Capture.WebScanning.initialize</em></p>
 <p><em>Cause</em>: Support for the TWAIN protocol itself not found on the client computer.</p>
-<p><em>Background</em>: This error is extremely unlikely to happen on a typical end-user PC running Vista or higher, because retail editions of Windows all include a copy of the TWAIN manager. However, a user on  Windows Servers 2008 R2 or higher can be missing TWAIN which will cause this error.</p>
-<p><em>How to Handle</em>: Using scanners in Windows Server 2008 R2 with TWAIN drivers requires the installation of Desktop Experience Pack.
+<p><em>Background</em>: This error is extremely unlikely to happen on a typical end-user PC running Windows 8.1 or higher, because retail editions of Windows all include a copy of the TWAIN manager. However, a user on  Windows Servers 2012 or higher can be missing TWAIN which will cause this error.</p>
+<p><em>How to Handle</em>: Using scanners in Windows Server 2012 with TWAIN drivers requires the installation of Desktop Experience Pack.
 You could just display the error string (the value of the msg parameter of the onScanError handler) or display your own message that TWAIN was not found on the computer.</p>
 </li>
 <li>
@@ -198,7 +198,7 @@ The msg parameter will be one of the following:</p>
 <br class="clear">
 
 <footer>
-    Copyright 2003 - 2021<?js?>  Atalasoft, Inc. All Rights Reserved.
+    Copyright 2003 - 2022<?js?>  Atalasoft, Inc. All Rights Reserved.
 
 </footer>
 
