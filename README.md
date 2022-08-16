@@ -1,7 +1,6 @@
 # Atalasoft Web Capture Service
 [![npm version](https://badge.fury.io/js/web-capture-service.svg)](https://badge.fury.io/js/web-capture-service)
 [![NuGet version](https://badge.fury.io/nu/Atalasoft.Web.Capture.Service.svg)](https://badge.fury.io/nu/Atalasoft.Web.Capture.Service)
-[![Bower version](https://badge.fury.io/bo/web-capture-service.svg)](https://badge.fury.io/bo/web-capture-service)
 
 Web Capture Service includes a set of integrated components that can be used to easily capture-enable a website.
 It uses Javascript, supported by an local scanning service on the client machine which 
@@ -10,11 +9,6 @@ could be deployed either on Windows as service or regular application, or on mac
 Also Web Capture Service supports scanning in multiuser environments - MS Terminal Server and Citrix. On these environments, multiple users work with Web Capture Service at the same time from different Windows logon sessions with the same user experience as on single-user machine.
 
 ### Installation
-
-#### Bower
-```bash
-bower install web-capture-service
-```
 
 #### Nuget
 ```bash
