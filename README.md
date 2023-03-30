@@ -3,7 +3,7 @@
 [![NuGet version](https://badge.fury.io/nu/Atalasoft.Web.Capture.Service.svg)](https://badge.fury.io/nu/Atalasoft.Web.Capture.Service)
 
 Web Capture Service includes a set of integrated components that can be used to easily capture-enable a website.
-It uses Javascript, supported by an local scanning service on the client machine which 
+It uses Javascript, supported by a local scanning service on the client machine which 
 could be deployed either on Windows as service or regular application, or on macOS as desktop application. 
 
 Also Web Capture Service supports scanning in multiuser environments - MS Terminal Server and Citrix. On these environments, multiple users work with Web Capture Service at the same time from different Windows logon sessions with the same user experience as on single-user machine.
@@ -28,7 +28,7 @@ There is also a version of [sample for ASP.NET Core](https://atalasoft.github.io
 
 ### Licensing 
 
-To run the projects locally, you need to have a DotImage license. There are various way to acquire the license:
+To run the projects locally, you need to have a DotImage license. There are various ways to acquire the license:
 
  - Use [DotImage Activation Wizard Visual Studio extension](https://visualstudiogallery.msdn.microsoft.com/88ff07c9-fe68-48bd-bfdc-3fbc8a0ec1db)
  - Download a complete DotImage installation package from the [Atalasoft web site](https://atalasoft.com). You will be prompted to activate the product during installation
